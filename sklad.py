@@ -17,7 +17,7 @@ sklad.zaloz("AB00010037", "chleba", 63.50, "A3")
 # test
 try:
     sklad.zaloz("AB00010034", "traktor", 3_450_230, "A2")
-    # spatne, takovy bar code jiz by pouzity, mela vyletet vyjimka
+    # spatne, takovy carovy code jiz by pouzity, mela vyletet vyjimka
     assert False, "carovy kod AB00010034 je jiz pouzity, proc se podarilo zalozit?"
 except:
     # OK, ocekavane
@@ -54,13 +54,13 @@ mleko = sklad.najdi("AB00010034")
 assert mleko is not None
 assert mleko.pocet == 81
 assert mleko.mistnost == mistnostA1
-assert mleko.bar_code == "AB00010034"
+assert mleko.kod == "AB00010034"
 assert mleko.nazev == "mleko"
 assert mleko.cena == 32.90
 
 assert sklad.nejvetsi_mistnost() == mistnostA2
 
-assert sklad.kde_je("NEEX-BAR-CODE") is None
+assert sklad.kde_je("NEEX-CAROVY-KOD") is None
 assert sklad.kde_je("AB00010037") is mistnostA3
 
 print("vyborne, nejspis vse funguje jak ma")
